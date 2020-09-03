@@ -19,11 +19,16 @@ def find_passage(game_desc, pid):
 # ------------------------------------------------------
 
 def update(current, game_desc, choice):
-    if current == "":
+    if choice == "":
         return current
+    for l in current ["links"]:
+        if choice == l["name"].lower():
+            current = find_passage(game_desc, l["pid"])
     return current
 
 def render(current):
+    print("You are at the " + current["name"])
+    print(current ["text"])
     pass
 
 def get_input(current):
